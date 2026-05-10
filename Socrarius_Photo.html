@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Socrarius Memory Archive</title>
+    <style>
+        body {
+            background: rgba(0, 5, 15, 0.9);
+            color: #e0f7ff;
+            font-family: 'Consolas', monospace;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* 🌸 上部固定バナー */
+        .system-banner {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            height: 40px;
+            background: rgba(0, 105, 217, 0.3);
+            border-bottom: 1px solid #00f2fe;
+            display: flex;
+            align-items: center;
+            padding-left: 20px;
+            font-size: 14px;
+            letter-spacing: 2px;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+        }
+
+        /* 🌸 セクションタイトル（追加） */
+        .section-title {
+            background: #000;
+            color: #00f2fe;
+            padding: 8px 15px;
+            margin: 40px 0 15px 0;
+            font-size: 11px;
+            font-weight: bold;
+            border-left: 4px solid #00f2fe;
+            letter-spacing: 2px;
+            box-shadow: inset 0 0 10px rgba(0, 242, 254, 0.2);
+        }
+
+        /* 🌸 アルバムグリッド（従来サイズ） */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 60px;
+        }
+
+        /* 🌸 ランチャーグリッド（ミニマルサイズ） */
+        .launcher-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .memory-card {
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px;
+            transition: 0.3s;
+            display: block;
+            text-decoration: none;
+        }
+
+        /* ランチャー用カードの調整 */
+        .launcher-card {
+            padding: 5px;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+        }
+
+        .memory-card:hover {
+            border-color: #00f2fe;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+            transform: scale(1.8); /* アルバムは少しだけ */
+        }
+
+        .launcher-card:hover {
+            transform: scale(1.2); /* アイコンは強調 */
+            z-index: 10;
+        }
+
+        .memory-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        .launcher-card img {
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* カスタムスクロールバー */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-thumb { background: #345485; }
+    </style>
+</head>
+<body>
+
+    <div class="system-banner">
+        USER SETTINGS & CLOUD LINK
+    </div>
+
+    <!-- アルバムセクション -->
+    <div class="gallery">
+        <div class="memory-card"><img src="https://kennew0922-lgtm.github.io/photo_48-k_yui_nanami/photo1.webp" alt="Memory 1"></div>
+    </div>
+
+    <!-- 🌸 PHOTO STORAGE LINK ランチャーセクション -->
+    <div class="section-title">PHOTO STORAGE LINK</div>
+    <div class="launcher-grid">
+        <a href="https://photos.google.com/" target="_blank" rel="noopener" class="memory-card launcher-card">
+            <img src="https://kennew0922-lgtm.github.io/Socrarius_Photo/icon1.png" alt="Google Photos">
+        </a>
+        <a href="https://www.icloud.com/photos/" target="_blank" rel="noopener" class="memory-card launcher-card">
+            <img src="https://kennew0922-lgtm.github.io/Socrarius_Photo/icon2.png" alt="iCloud Photos">
+        </a>
+        <a href="https://www.amazon.co.jp/photos/" target="_blank" rel="noopener" class="memory-card launcher-card">
+            <img src="https://kennew0922-lgtm.github.io/Socrarius_Photo/icon3.png" alt="Amazon Photos">
+        </a>
+    </div>
+
+</body>
+</html>
