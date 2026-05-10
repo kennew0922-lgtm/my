@@ -77,10 +77,14 @@
             border-radius: 6px;
         }
 
-        .memory-card:hover {
+.memory-card:hover {
             border-color: #00f2fe;
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
-            transform: scale(1.1); /* アルバムは少しだけ */
+            /* 外側に広がる青い光（グロー効果） */
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.6), 
+                        inset 0 0 10px rgba(0, 242, 254, 0.4);
+            transform: scale(1.02);
+            background: rgba(0, 242, 254, 0.1); /* ほんのり背景も青く */
+            cursor: pointer;
         }
 
         .launcher-card:hover {
@@ -93,6 +97,12 @@
             height: 100%;
             object-fit: cover;
             border-radius: 2px;
+        }
+
+        /* 画像自体にも少し変化を出すとさらに綺麗です */
+        .memory-card:hover img {
+            filter: brightness(1.2); /* 少し明るくする */
+            transition: 0.3s;
         }
 
         .launcher-card img {
