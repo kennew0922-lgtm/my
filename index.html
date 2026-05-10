@@ -58,6 +58,15 @@
             margin-bottom: 40px;
         }
 
+        /* ===============================================
+        =========🌸 ステータス表示エリア（ここが重要！）==========
+        ================================================== */
+        .status-container {
+            position: relative; /* ボタンの配置基準にする */
+            width: fit-content;
+            margin-bottom: 20px;
+        }
+
         .memory-card {
             border: 1px solid rgba(0, 242, 254, 0.3);
             background: rgba(255, 255, 255, 0.05);
@@ -77,7 +86,7 @@
             border-radius: 6px;
         }
 
-.memory-card:hover {
+        .memory-card:hover {
             border-color: #00f2fe;
             /* 外側に広がる青い光（グロー効果） */
             box-shadow: 0 0 20px rgba(0, 242, 254, 0.6), 
@@ -110,6 +119,43 @@
             object-fit: contain;
         }
 
+        /*=================================
+        ===== 🌸 切り替えボタンの配置 ========
+        ===================================*/
+        .status-btn {
+            position: absolute;
+            top: 260px; /* 上からの位置 */
+            width: 26px;
+            height: 113px;
+            cursor: pointer;
+            z-index: 10;
+            transition: 0.2s;
+            filter: drop-shadow(0 0 5px rgba(0, 242, 254, 0.5));
+        }
+
+        .status-btn:hover {
+            filter: brightness(1.5) drop-shadow(0 0 10px #00f2fe);
+            transform: scale(1.05);
+        }
+
+        #btn-prev { left: 15px; } /* 左ボタン */
+        #btn-next { right: 15px; } /* 右ボタン */
+
+
+         .button1 {
+            position: fixed;
+            top: 220px; left: 350px; width: 113px;height: 26px;
+            align-items: center;
+            z-index: 1000;
+
+        .button2 {
+            position: fixed;
+            top: 220px; left: 50px; width: 113px;height: 26px;
+            align-items: center;
+            z-index: 1000;
+        }
+
+
         /* カスタムスクロールバー */
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-thumb { background: #345485; }
@@ -124,6 +170,8 @@
      <div class="section-title">USER SETTINGS PROFILE</div>
     <!-- アルバムセクション -->
     <div class="gallery">
+    <img src="https://kennew0922-lgtm.github.io/my/button2.png" id="btn-prev" class="status-btn" alt="Prev">
+    <img src="https://kennew0922-lgtm.github.io/my/button1.png" id="btn-next" class="status-btn" alt="Next">
         <div class="memory-card">
             <a href="https://onedrive.live.com/personal/8efd2a634dbe3220/_layouts/15/doc.aspx?resid=3d8cbfd0-3fa0-4694-9854-022a8f135c10&cid=8efd2a634dbe3220" target="_blank" rel="noopener" >
             <img src="https://kennew0922-lgtm.github.io/my/my1.png" alt="Memory 1"></div>
@@ -154,6 +202,26 @@
         </a>
 
     </div>
+
+    <script>
+        const images = [
+            "https://kennew0922-lgtm.github.io/my/my1.png",
+            "https://kennew0922-lgtm.github.io/my/my2.png",
+            "https://kennew0922-lgtm.github.io/my/my3.png"
+        ];
+        let currentIndex = 0;
+        const statusImg = document.getElementById('status-image');
+
+        document.getElementById('btn-next').onclick = () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            statusImg.src = images[currentIndex];
+        };
+
+        document.getElementById('btn-prev').onclick = () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            statusImg.src = images[currentIndex];
+        };
+    </script>
 
 </body>
 </html>
