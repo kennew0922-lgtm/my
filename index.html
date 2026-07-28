@@ -29,7 +29,7 @@
             backdrop-filter: blur(5px);
         }
 
-        /* 🌸 セクションタイトル（追加） */
+        /* 🌸 セクションタイトル */
         .section-title {
             background: #000;
             color: #00f2fe;
@@ -42,29 +42,22 @@
             box-shadow: inset 0 0 10px rgba(0, 242, 254, 0.2);
         }
 
-        /* 🌸 アルバムグリッド（従来サイズ） */
+        /* 🌸 アルバムエリア */
         .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 5px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: fit-content;
             margin-top: 10px;
         }
 
-        /* 🌸 ランチャーグリッド（ミニマルサイズ） */
+        /* 🌸 ランチャーグリッド */
         .launcher-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
             gap: 12px;
             margin-bottom: 40px;
-        }
-
-        /* ===============================================
-        =========🌸 ステータス表示エリア（ここが重要！）==========
-        ================================================== */
-        .status-container {
-            position: relative; /* ボタンの配置基準にする */
-            width: fit-content;
-            margin-bottom: 20px;
         }
 
         .memory-card {
@@ -74,6 +67,7 @@
             transition: 0.3s;
             display: block;
             text-decoration: none;
+            border-radius: 4px;
         }
 
         /* ランチャー用カードの調整 */
@@ -88,16 +82,15 @@
 
         .memory-card:hover {
             border-color: #00f2fe;
-            /* 外側に広がる青い光（グロー効果） */
             box-shadow: 0 0 20px rgba(0, 242, 254, 0.6), 
                         inset 0 0 10px rgba(0, 242, 254, 0.4);
             transform: scale(1.02);
-            background: rgba(0, 242, 254, 0.1); /* ほんのり背景も青く */
+            background: rgba(0, 242, 254, 0.1);
             cursor: pointer;
         }
 
         .launcher-card:hover {
-            transform: scale(1.2); /* アイコンは強調 */
+            transform: scale(1.2);
             z-index: 10;
         }
 
@@ -106,11 +99,11 @@
             height: 100%;
             object-fit: cover;
             border-radius: 2px;
+            display: block;
         }
 
-        /* 画像自体にも少し変化を出すとさらに綺麗です */
         .memory-card:hover img {
-            filter: brightness(1.2); /* 少し明るくする */
+            filter: brightness(1.2);
             transition: 0.3s;
         }
 
@@ -119,12 +112,11 @@
             object-fit: contain;
         }
 
-        /*=================================
-        ===== 🌸 切り替えボタンの配置 ========
-        ===================================*/
+        /* 🌸 切り替えボタンの配置 */
         .status-btn {
             position: absolute;
-            top: 260px; /* 上からの位置 */
+            top: 50%;
+            transform: translateY(-50%);
             width: 26px;
             height: 113px;
             cursor: pointer;
@@ -135,14 +127,11 @@
 
         .status-btn:hover {
             filter: brightness(1.5) drop-shadow(0 0 10px #00f2fe);
-            transform: scale(1.05);
+            transform: translateY(-50%) scale(1.05);
         }
 
-        #btn-prev { left: 15px; } /* 左ボタン */
-        #btn-next { right: 15px; } /* 右ボタン */
-
-        }
-
+        #btn-prev { left: 15px; }
+        #btn-next { right: 15px; }
 
         /* カスタムスクロールバー */
         ::-webkit-scrollbar { width: 5px; }
@@ -152,43 +141,43 @@
 <body>
 
     <div class="system-banner">
-        USER SETTINGS & CONFIDENEIAL DATA
+        USER SETTINGS & CONFIDENTIAL DATA
     </div>
     <br>
-     <div class="section-title">USER SETTINGS PROFILE</div>
+    <div class="section-title">USER SETTINGS PROFILE</div>
+
     <!-- アルバムセクション -->
     <div class="gallery">
-    <img src="https://socrarius-tool.com/my/button2.png" id="btn-prev" class="status-btn" alt="Prev">
-    <img src="https://socrarius-tool.com/my/button1.png" id="btn-next" class="status-btn" alt="Next">
-        <div class="memory-card">
-            <a href="https://onedrive.live.com/personal/8efd2a634dbe3220/_layouts/15/doc.aspx?resid=3d8cbfd0-3fa0-4694-9854-022a8f135c10&cid=8efd2a634dbe3220" target="_blank" rel="noopener" >
-            <img src="https://socrarius-tool.com/my/my1.png" id="status-image" alt="Memory 1"></div>
+        <img src="https://socrarius-tool.com/my/button2.png" id="btn-prev" class="status-btn" alt="Prev">
+        <img src="https://socrarius-tool.com/my/button1.png" id="btn-next" class="status-btn" alt="Next">
+        
+        <!-- 🌸 動的にリンク先が変わるアンカータグ！ -->
+        <a id="status-link" href="#" target="_blank" rel="noopener" class="memory-card">
+            <img src="https://socrarius-tool.com/my/my1.png" id="status-image" alt="Memory Profile">
         </a>
-
     </div>
 
     <!-- 🌸 PHOTO STORAGE LINK ランチャーセクション -->
-    <div class="section-title">CONFIDENEIAL DATAK</div>
+    <div class="section-title">CONFIDENTIAL DATA</div>
     <div class="launcher-grid">
         <a href="https://one.google.com/storage?g1_landing_page=1" target="_blank" rel="noopener" class="memory-card launcher-card">
             <img src="https://socrarius-tool.com/my/icon1.png" alt="Google Photos">
         </a>
         <a href="https://onedrive.live.com/?view=1" target="_blank" rel="noopener" class="memory-card launcher-card">
-            <img src="https://socrarius-tool.com/my/icon2.png" alt="iCloud Photos">
+            <img src="https://socrarius-tool.com/my/icon2.png" alt="OneDrive">
         </a>
         <a href="https://www.icloud.com/" target="_blank" rel="noopener" class="memory-card launcher-card">
-            <img src="https://socrarius-tool.com/my/icon3.png" alt="Amazon Photos">
+            <img src="https://socrarius-tool.com/my/icon3.png" alt="iCloud">
         </a>
         <a href="https://www.amazon.co.jp/photos/" target="_blank" rel="noopener" class="memory-card launcher-card">
             <img src="https://socrarius-tool.com/my/icon5.png" alt="Amazon Photos">
         </a>
         <a href="https://keep.google.com/" target="_blank" rel="noopener" class="memory-card launcher-card">
-            <img src="https://socrarius-tool.com/my/icon6.png" alt="Amazon Photos">
+            <img src="https://socrarius-tool.com/my/icon6.png" alt="Google Keep">
         </a>
         <a href="https://secure.freee.co.jp/" target="_blank" rel="noopener" class="memory-card launcher-card">
-            <img src="https://socrarius-tool.com/my/icon7.png" alt="Amazon Photos">
+            <img src="https://socrarius-tool.com/my/icon7.png" alt="freee">
         </a>
-
     </div>
 
     <script>
@@ -200,21 +189,42 @@
             "https://socrarius-tool.com/my/my6.png",
             "https://socrarius-tool.com/my/my7.png",
             "https://socrarius-tool.com/my/my8.png",
-            "https://socrarius-tool.com/my/my9.png",
+            "https://socrarius-tool.com/my/my9.png", // 🌸 ケンくんの本当の姿（金庫の鍵！）
             "https://socrarius-tool.com/my/my4.png"
         ];
+
+        // 🌸 金庫（全ID/PW保管）のOneDrive URL
+        const vaultUrl = "https://onedrive.live.com/personal/8efd2a634dbe3220/_layouts/15/doc.aspx?resid=3d8cbfd0-3fa0-4694-9854-022a8f135c10&cid=8efd2a634dbe3220";
+
         let currentIndex = 0;
         const statusImg = document.getElementById('status-image');
+        const statusLink = document.getElementById('status-link');
+
+        // 🌸 画像とリンク先を同時に更新する大魔法関数！
+        function updateStatus() {
+            const currentImgUrl = images[currentIndex];
+            statusImg.src = currentImgUrl;
+
+            // my9.png かどうかで分岐（IF文連打！）
+            if (currentImgUrl.includes("my9.png")) {
+                statusLink.href = vaultUrl; // ★本当の姿の時は金庫へアクセス！
+            } else {
+                statusLink.href = currentImgUrl; // ★それ以外は高画質元画像へ直リンク！
+            }
+        }
 
         document.getElementById('btn-next').onclick = () => {
             currentIndex = (currentIndex + 1) % images.length;
-            statusImg.src = images[currentIndex];
+            updateStatus();
         };
 
         document.getElementById('btn-prev').onclick = () => {
             currentIndex = (currentIndex - 1 + images.length) % images.length;
-            statusImg.src = images[currentIndex];
+            updateStatus();
         };
+
+        // 初期実行（最初のmy1.pngのリンクをセット）
+        updateStatus();
     </script>
 
 </body>
