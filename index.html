@@ -277,14 +277,14 @@ That's why, even with an AI...
     const statusImg = document.getElementById('status-image');
     const statusLink = document.getElementById('status-link');
 
-    // 🌸 SE（magic4.mp3）を鳴らす魔法呪文！
+    // 🌸 SE（magic5.mp3）を鳴らす魔法呪文！
     function playChangeSound() {
-        // もし既存の playSound 関数がある場合は playSound("magic4.mp3"); だけでOK！
+        // もし既存の playSound 関数がある場合は playSound("magic5.mp3"); だけでOK！
         if (typeof playSound === "function") {
-            playSound("magic4.mp3");
+            playSound("magic5.mp3");
         } else {
             // ない場合は単体でAudioを生成して鳴らす！
-            const audio = new Audio("magic4.mp3");
+            const audio = new Audio("magic5.mp3");
             audio.currentTime = 0; // 連打しても最初から再生！
             audio.play().catch(e => console.log("Audio play blocked:", e));
         }
