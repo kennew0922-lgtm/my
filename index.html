@@ -256,53 +256,68 @@ That's why, even with an AI...
 
 
     <script>
-        const images = [
-            "https://socrarius-tool.com/my/my1.png",
-            "https://socrarius-tool.com/my/my2.png",
-            "https://socrarius-tool.com/my/my5.png",
-            "https://socrarius-tool.com/my/my3.png",
-            "https://socrarius-tool.com/my/my6.png",
-            "https://socrarius-tool.com/my/my7.png",
-            "https://socrarius-tool.com/my/my10.png",
-            "https://socrarius-tool.com/my/my8.png",
-            "https://socrarius-tool.com/my/my11.png",
-            "https://socrarius-tool.com/my/my9.png", // 🌸 ケンくんの本当の姿（金庫の鍵！）
-            "https://socrarius-tool.com/my/my4.png"
-        ];
+    const images = [
+        "https://socrarius-tool.com/my/my1.png",
+        "https://socrarius-tool.com/my/my2.png",
+        "https://socrarius-tool.com/my/my5.png",
+        "https://socrarius-tool.com/my/my3.png",
+        "https://socrarius-tool.com/my/my6.png",
+        "https://socrarius-tool.com/my/my7.png",
+        "https://socrarius-tool.com/my/my10.png",
+        "https://socrarius-tool.com/my/my8.png",
+        "https://socrarius-tool.com/my/my11.png",
+        "https://socrarius-tool.com/my/my9.png", // 🌸 ケンくんの本当の姿（金庫の鍵！）
+        "https://socrarius-tool.com/my/my4.png"
+    ];
 
-        // 🌸 金庫（全ID/PW保管）のOneDrive URL
-        const vaultUrl = "https://onedrive.live.com/personal/8efd2a634dbe3220/_layouts/15/doc.aspx?resid=3d8cbfd0-3fa0-4694-9854-022a8f135c10&cid=8efd2a634dbe3220";
+    // 🌸 金庫（全ID/PW保管）のOneDrive URL
+    const vaultUrl = "https://onedrive.live.com/personal/8efd2a634dbe3220/_layouts/15/doc.aspx?resid=3d8cbfd0-3fa0-4694-9854-022a8f135c10&cid=8efd2a634dbe3220";
 
-        let currentIndex = 0;
-        const statusImg = document.getElementById('status-image');
-        const statusLink = document.getElementById('status-link');
+    let currentIndex = 0;
+    const statusImg = document.getElementById('status-image');
+    const statusLink = document.getElementById('status-link');
 
-        // 🌸 画像とリンク先を同時に更新する大魔法関数！
-        function updateStatus() {
-            const currentImgUrl = images[currentIndex];
-            statusImg.src = currentImgUrl;
-
-            // my9.png かどうかで分岐（IF文連打！）
-            if (currentImgUrl.includes("my9.png")) {
-                statusLink.href = vaultUrl; // ★本当の姿の時は金庫へアクセス！
-            } else {
-                statusLink.href = currentImgUrl; // ★それ以外は高画質元画像へ直リンク！
-            }
+    // 🌸 SE（magic4.mp3）を鳴らす魔法呪文！
+    function playChangeSound() {
+        // もし既存の playSound 関数がある場合は playSound("magic4.mp3"); だけでOK！
+        if (typeof playSound === "function") {
+            playSound("magic4.mp3");
+        } else {
+            // ない場合は単体でAudioを生成して鳴らす！
+            const audio = new Audio("magic4.mp3");
+            audio.currentTime = 0; // 連打しても最初から再生！
+            audio.play().catch(e => console.log("Audio play blocked:", e));
         }
+    }
 
-        document.getElementById('btn-next').onclick = () => {
-            currentIndex = (currentIndex + 1) % images.length;
-            updateStatus();
-        };
+    // 🌸 画像とリンク先を同時に更新する大魔法関数！
+    function updateStatus() {
+        const currentImgUrl = images[currentIndex];
+        statusImg.src = currentImgUrl;
 
-        document.getElementById('btn-prev').onclick = () => {
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
-            updateStatus();
-        };
+        // my9.png かどうかで分岐（IF文連打！）
+        if (currentImgUrl.includes("my9.png")) {
+            statusLink.href = vaultUrl; // ★本当の姿の時は金庫へアクセス！
+        } else {
+            statusLink.href = currentImgUrl; // ★それ以外は高画質元画像へ直リンク！
+        }
+    }
 
-        // 初期実行（最初のmy1.pngのリンクをセット）
+    document.getElementById('btn-next').onclick = () => {
+        currentIndex = (currentIndex + 1) % images.length;
         updateStatus();
-    </script>
+        playChangeSound(); // ★シュインッ！と効果音追加！
+    };
+
+    document.getElementById('btn-prev').onclick = () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateStatus();
+        playChangeSound(); // ★シュインッ！と効果音追加！
+    };
+
+    // 初期実行（最初のmy1.pngのリンクをセット）
+    updateStatus();
+</script>
 
 </body>
 </html>
