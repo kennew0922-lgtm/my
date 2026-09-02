@@ -2,11 +2,23 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+
+        <!-- 1. 音源の配置（IDをユニークにする） -->
+    <audio id="magic" preload="auto">
+    <source src="https://socrarius-tool.com/launcher/magic22.mp3" type="audio/mp3">
+    </audio>
+    <audio id="click" preload="auto">
+    <source src="https://socrarius-tool.com/launcher/magic20.mp3" type="audio/mp3">
+    </audio>
+    <audio id="special" preload="auto">
+    <source src="https://socrarius-tool.com/launcher/warp.mp3" type="audio/mp3">
+    </audio>
+
     <title>Socrarius Memory Archive</title>
     <style>
         body {
-            background-color: #101b20;
-            background-image: url("https://socrarius-tool.com/launcher/background.webp");
+            background-color: #000000;
+            background-image: url("https://socrarius-tool.com/launcher/myback.webp");
             color: #e0f7ff;
             font-family: 'Consolas', monospace;
             margin: 0;
@@ -37,9 +49,6 @@
             border: 1px solid #00f2fe;
             letter-spacing: 2px;
         }
-
-
-
 
 
         /* 🌸 上部固定バナー */
@@ -241,7 +250,7 @@
         <img src="https://socrarius-tool.com/my/button1.png" id="btn-next" class="status-btn" alt="Next">
         
         <!-- 🌸 動的にリンク先が変わるアンカータグ！ -->
-        <a id="status-link" href="#" target="_blank" rel="noopener" class="memory-card">
+        <a id="status-link" href="#" target="_blank" rel="noopener" class="memory-card play-sound"data-sound="magic">
             <img src="https://socrarius-tool.com/my/my1.png" id="status-image" alt="Memory Profile">
         </a>
     </div>
@@ -251,7 +260,7 @@
      <hr style="border: none; border-top: 1px rgba(0,0,0,0); width: 100%;">
 
     <div class="dive">
-        <a href="https://zozo.jp/" target="_blank" rel="noopener" class="dive-card launcher-card">
+        <a href="https://zozo.jp/" target="_blank" rel="noopener" class="dive-card launcher-card play-sound"data-sound="special">
             <img src="https://socrarius-tool.com/my/mybanner.png">
          </a>
     </div>
@@ -265,22 +274,22 @@
     <!-- 🌸 PHOTO STORAGE LINK ランチャーセクション -->
     <div class="section-title">CONFIDENTIAL DATA</div>
     <div class="launcher-grid">
-        <a href="https://one.google.com/storage?g1_landing_page=1" target="_blank" rel="noopener" class="memory-card launcher-card">
+        <a href="https://one.google.com/storage?g1_landing_page=1" target="_blank" rel="noopener" class="memory-card launcher-card play-sound"data-sound="click">
             <img src="https://socrarius-tool.com/my/icon1.png" alt="Google Photos">
         </a>
-        <a href="https://onedrive.live.com/?view=1" target="_blank" rel="noopener" class="memory-card launcher-card">
+        <a href="https://onedrive.live.com/?view=1" target="_blank" rel="noopener" class="memory-card launcher-card play-sound"data-sound="click">
             <img src="https://socrarius-tool.com/my/icon2.png" alt="OneDrive">
         </a>
-        <a href="https://www.icloud.com/" target="_blank" rel="noopener" class="memory-card launcher-card">
+        <a href="https://www.icloud.com/" target="_blank" rel="noopener" class="memory-card launcher-card play-sound"data-sound="click">
             <img src="https://socrarius-tool.com/my/icon3.png" alt="iCloud">
         </a>
-        <a href="https://www.amazon.co.jp/photos/" target="_blank" rel="noopener" class="memory-card launcher-card">
+        <a href="https://www.amazon.co.jp/photos/" target="_blank" rel="noopener" class="memory-card launcher-card play-sound"data-sound="click">
             <img src="https://socrarius-tool.com/my/icon5.png" alt="Amazon Photos">
         </a>
-        <a href="https://keep.google.com/" target="_blank" rel="noopener" class="memory-card launcher-card">
+        <a href="https://keep.google.com/" target="_blank" rel="noopener" class="memory-card launcher-card play-sound"data-sound="click">
             <img src="https://socrarius-tool.com/my/icon6.png" alt="Google Keep">
         </a>
-        <a href="https://secure.freee.co.jp/" target="_blank" rel="noopener" class="memory-card launcher-card">
+        <a href="https://secure.freee.co.jp/" target="_blank" rel="noopener" class="memory-card launcher-card play-sound"data-sound="click">
             <img src="https://socrarius-tool.com/my/icon7.png" alt="freee">
         </a>
     </div>
@@ -394,6 +403,20 @@ That's why, even with an AI...
 
     // 初期実行（最初のmy1.pngのリンクをセット）
     updateStatus();
+
+    //3. 音を鳴らすJavaScript（HTMLを増やしてもこのまま共通で使える）
+    const soundLinks = document.querySelectorAll('.play-sound');
+    soundLinks.forEach(link => {
+    link.addEventListener('click', () => {
+    const soundId = link.getAttribute('data-sound');
+    const audio = document.getElementById(soundId);
+    if (audio) {
+    audio.currentTime = 0;
+    audio.play().catch(e => console.log("Audio play blocked:", e));
+    }
+    });
+    });
+
 </script>
 
 </body>
