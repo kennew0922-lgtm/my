@@ -349,15 +349,16 @@ That's why, even with an AI...
         "https://socrarius-tool.com/my/my6.png",
         "https://socrarius-tool.com/my/my7.png",
         "https://socrarius-tool.com/my/my12.png",
+        "https://socrarius-tool.com/my/my13.png",
         "https://socrarius-tool.com/my/my10.png",
         "https://socrarius-tool.com/my/my8.png",
         "https://socrarius-tool.com/my/my11.png",
-        "https://socrarius-tool.com/my/my9.png", // 🌸 ケンくんの本当の姿（金庫の鍵！）
+        "https://socrarius-tool.com/my/my9.png", // 🌸 ケンくんの本当の姿（金庫の鍵！）←鍵は機能停止
         "https://socrarius-tool.com/my/my4.png"
     ];
 
     // 🌸 金庫（全ID/PW保管）のOneDrive URL
-    const vaultUrl = "https://onedrive.live.com/personal/8efd2a634dbe3220/_layouts/15/doc.aspx?resid=3d8cbfd0-3fa0-4694-9854-022a8f135c10&cid=8efd2a634dbe3220";
+    /*const vaultUrl = "";*///危険のため機能停止、別システムで安全起動に変更
 
     let currentIndex = 0;
     const statusImg = document.getElementById('status-image');
@@ -381,8 +382,8 @@ That's why, even with an AI...
         const currentImgUrl = images[currentIndex];
         statusImg.src = currentImgUrl;
 
-        // my9.png かどうかで分岐（IF文連打！）
-        if (currentImgUrl.includes("my9.png")) {
+        // my9.png かどうかで分岐（IF文連打！）✨直すの面倒だから絶対使わない画像ファイル指定に切り替え
+        if (currentImgUrl.includes("my9999.png")) {
             statusLink.href = vaultUrl; // ★本当の姿の時は金庫へアクセス！
         } else {
             statusLink.href = currentImgUrl; // ★それ以外は高画質元画像へ直リンク！
